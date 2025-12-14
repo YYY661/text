@@ -124,3 +124,8 @@ int main(){
 	   printf("位序i不合法，删除失败\n");
 	return 0;
 }
+
+
+//顺序表的查找
+#include<stdio.h>
+#define 
