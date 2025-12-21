@@ -115,3 +115,96 @@ bool ListInsert(LinkList &L,int i,ElemType &e){//e的值需要返回，所以和
 	free(q);            //释放结点的存储空间
 	return true;
 }
+
+//删除指定结点p，需要修改p的前驱结点的next指针
+bool DeleteNode(LNode *p){
+     if(p==NULL)
+        return false;
+     LNode *q=p->next;
+     p->data=p->next->data;
+     p->next=q->next;
+     free(q);
+     return true;
+}
+
+//如果p结点是最后一个结点，传入一个头结点，利用循环从头结点开始寻找指定结点p的前驱结点
+
+
+
+//单链表的查找
+//按位查找，返回第i个元素
+LNode * GetElem(LinkList L,int i){
+if(i<0)
+   return false;
+LNode *p;       //指针p指向当前扫描到的结点
+int j=0;         //当前p指向的是第几个结点
+p=L;            //L指向头结点，头结点是第0个结点（不存数据）
+while(p!=NULL&&j<i){   //循环找到第i个结点
+     p=p->next;
+     j++;
+}
+return p;
+}
+
+//按值查找，找到数据域==e的结点
+LNode * LocateElem(LinkList L,ElemType e){
+    LNode *p=L->next;
+        //从第一个结点开始查找数据域为e的结点
+    while(p!=NULL&&p->data!=e)
+         p=p->next;
+    return p;   //找到后返回该结点指针，否则返回NULL
+}
+
+
+//求表的长度
+int length(LinkList L){
+    int len=0;
+    LNode *p=L;
+    while(p->next!=NULL){
+         p=p->next;
+         len++;
+    }
+    return len;
+}
+
+
+//单链表的建立
+//尾插法建立单链表（可以用按位序插入的操作来实现）
+typedef struct LNode{
+        ElemType data;
+        struct LNode *next;
+}LNode,*LinkList;
+//初始化一个单链表
+bool InitList(LinkList &L){
+    L=(LNode *)malloc(sizeof(LNode));
+    if(L==NULL)      //内存不足，分配失败
+       return false;
+    L->next=NULL;    //头结点之后暂时还没有结点
+    return true;
+}
+void test(){
+     LinkList L;
+     InitList(L);
+}
+int length;
+while{
+     ListInsert(L,length+1,e)   //调用按位序插入的函数
+     length++;
+}
+
+//尾插法（设置一个表尾指针，执行一个后插操作）
+bool InsertNextNode(LNode *p,ElemType e){
+     if(p==NULL)
+       return flase;
+     LNode *s=(LNode *)malloc(sizeof(LNode);
+     if(s==NULL)
+       return flase;
+     s->data=e;
+     s->next=p->next;
+     p->next=s;
+     return true;
+}
+
+
+
+
